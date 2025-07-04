@@ -1,0 +1,82 @@
+[
+  {
+    "id":"1",
+    "fullName": "John Doe",
+    "email": "johndoe@example.com",
+    "phoneNumber": "+2567567890",
+    "role": "administrator",
+    "password": "SecurePass123!"
+  },
+  {
+    "id":"2",
+    "fullName": "Jane Smith",
+    "email": "janesmith@example.com",
+    "phoneNumber": "+2567654321",
+    "role": "referee",
+    "password": "JanePass456!"
+  },
+  {
+    "id":"3",
+    "fullName": "Michael Johnson",
+    "email": "michaelj@example.com",
+    "phoneNumber": "+2567334455",
+    "role": "referee",
+    "password": "Mjohnson@789"
+  },
+  {
+    "id":"4",
+    "fullName": "Emily Davis",
+    "email": "emilyd@example.com",
+    "phoneNumber": "+2567333444",
+    "role": "administrator",
+    "password": "EmilyD@321"
+  },
+  {
+    "id":"5",
+    "fullName": "Daniel Martinez",
+    "email": "danielm@example.com",
+    "phoneNumber": "+2567666777",
+    "role": "referee",
+    "password": "DanielM!998"
+  },
+  {
+    "id":"6",
+    "fullName": "Sophia Wilson",
+    "email": "sophiaw@example.com",
+    "phoneNumber": "+2567777888",
+    "role": "referee",
+    "password": "Sophia@2024"
+  },
+  {
+    "id":"7",
+    "fullName": "Matthew Brown",
+    "email": "matthewb@example.com",
+    "phoneNumber": "+2567888999",
+    "role": "referee",
+    "password": "MattB_110"
+  },
+  {
+    "id":"8",
+    "fullName": "Olivia Taylor",
+    "email": "oliviat@example.com",
+    "phoneNumber": "+2567999000",
+    "role": "referee",
+    "password": "OliviaT*789"
+  },
+  {
+    "id":"9",
+    "fullName": "William Anderson",
+    "email": "williama@example.com",
+    "phoneNumber": "+2567000111",
+    "role": "referee",
+    "password": "WillA@654"
+  },
+  {
+    "id":"10",
+    "fullName": "Ava Thomas",
+    "email": "avathomas@example.com",
+    "phoneNumber": "+2567555666",
+    "role": "administrator",
+    "password": "AvaT@2025"
+  }
+]

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .profile-container {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    h2.name {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 14px;
+      color: #555;
+      margin: 5px 0;
+    }
+
+    .editable {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 5px;
+      width: 80%;
+      margin: 5px auto;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+  <a href="PLAYER.HMTL">Go to PLAYER Page</a>
+
+</head>
+<body>
+
+<div class="profile-container">
+  <img class="avatar" src="https://i.pravatar.cc/150?img=47" alt="User Avatar">
+  <h2 class="name" id="name">Jane Doe : ADMIN</h2>
+
+  <p>Email: <span id="email">jane.doe@example.com</span></p>
+  <p>Gender: <span id="gender">male</span></p>
+  <p>Date of Birth: <span id="dob">1990-01-01</span></p>
+  <p>Nationality: <span id="nationality">Ugadan</span></p>
+  <p>Bio: <span id="bio">RAPCIO admin.</span></p>
+
+  <!-- Editable Form -->
+  <div id="editForm" class="hidden">
+    <input type="text" id="editName" class="editable" placeholder="Edit name">
+    <input type="email" id="editEmail" class="editable" placeholder="Edit email">
+    <input type="text" id="editgender" class="editable" placeholder="Edit gender">
+    <input type="text" id="editNationality" class="editable" placeholder="Edit nationality">
+    <textarea id="editBio" class="editable" placeholder="Edit bio"></textarea>
+  </div>
+
+  <button id="editButton" onclick="toggleEdit()">Edit Profile</button>
+</div>
+
+<script>
+  let isEditing = false;
+
+  function toggleEdit() {
+    isEditing = !isEditing;
+
+    const nameElement = document.getElementById('name');
+    const emailElement = document.getElementById('email');
+    const genderElement = document.getElementById('gender');
+  
+    const nationalityElement = document.getElementById('nationality');
+    const bioElement = document.getElementById('bio');
+
+    const editForm = document.getElementById('editForm');
+    const editButton = document.getElementById('editButton');
+
+    if (isEditing) {
+      // Pre-fill input fields with current values
+      document.getElementById('editName').value = nameElement.innerText;
+      document.getElementById('editEmail').value = emailElement.innerText;
+      document.getElementById('editgender').value = genderElement.innerText;
+     
+      document.getElementById('editNationality').value = nationalityElement.innerText;
+      document.getElementById('editBio').value = bioElement.innerText;
+
+      editForm.classList.remove('hidden');
+      editButton.innerText = 'Save Profile';
+    } else {
+      // Update text content with input values
+      nameElement.innerText = document.getElementById('editName').value;
+      emailElement.innerText = document.getElementById('editEmail').value;
+      genderElement.innerText = document.getElementById('editgender').value;
+      
+      nationalityElement.innerText = document.getElementById('editNationality').value;
+      bioElement.innerText = document.getElementById('editBio').value;
+
+      editForm.classList.add('hidden');
+      editButton.innerText = 'Edit Profile';
+    }
+  }
+</script>
+<!-- LINK UP -->
+<a href="Player.html">Go to player page</a>
+
+
+</body>
+</html>

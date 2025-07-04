@@ -1,0 +1,63 @@
+[
+    {
+      "id": "1",
+      "clubName": "Kampala City Council Authority FC",
+      "email": "info@kcca-fc.com",
+      "description": "One of Uganda's top football clubs, known for its dominance in the league."
+    },
+    {
+      "id": "2",
+      "clubName": "SC Villa",
+      "email": "contact@scvilla.co.ug",
+      "description": "Uganda’s most successful club with a rich history in local and continental football."
+    },
+    {
+      "id": "3",
+      "clubName": "Vipers SC",
+      "email": "admin@viperssc.com",
+      "description": "A rapidly rising club with multiple league titles and a strong youth system."
+    },
+    {
+      "id": "4",
+      "clubName": "URA FC",
+      "email": "ura@urafc.co.ug",
+      "description": "A disciplined and competitive club backed by the Uganda Revenue Authority."
+    },
+    {
+      "id": "5",
+      "clubName": "Express FC",
+      "email": "support@expressfc.co.ug",
+      "description": "One of Uganda’s oldest and most passionate football clubs."
+    },
+    {
+      "id": "6",
+      "clubName": "Bul FC",
+      "email": "bul@bulfc.com",
+      "description": "A strong and determined team known for its aggressive attacking football."
+    },
+    {
+      "id": "7",
+      "clubName": "Onduparaka FC",
+      "email": "info@onduparakafc.com",
+      "description": "A fan-favorite club from northern Uganda with a strong home record."
+    },
+    {
+      "id": "8",
+      "clubName": "Wakiso Giants FC",
+      "email": "wakiso@wakisogiants.com",
+      "description": "A young and ambitious club making waves in Ugandan football."
+    },
+    {
+      "id": "9",
+      "clubName": "Gaddafi FC",
+      "email": "gaddafi@gaddafifc.com",
+      "description": "A competitive club with a growing presence in the FUFA league."
+    },
+    {
+      "id": "10",
+      "clubName": "Maroons FC",
+      "email": "maroons@maroonsfc.co.ug",
+      "description": "A disciplined team with a strong focus on developing local talent."
+    }
+  ]
+  

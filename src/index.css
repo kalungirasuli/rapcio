@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Default styling for the close button */
+/* .custom-toast .Toastify__close-button { */
+  /* @apply text-textColor; */
+/* } */
+
+/* Dark mode styling */
+/* .dark .custom-toast .Toastify__close-button { */
+  /* @apply text-textColorDark; */
+/* } */
+
+/* Light Mode Scrollbar */
+.overflow-x-auto,
+.overflow-y-auto {
+  scrollbar-color: #d4d6d8 #f4f5f5;
+  /* Thumb and Track colors */
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.overflow-x-auto::-webkit-scrollbar,
+.overflow-y-auto::-webkit-scrollbar {
+  height: 6px;
+  /* Height for horizontal scrollbars */
+  width: 6px;
+  /* Width for vertical scrollbars */
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb,
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background-color: #d4d6d8;
+  /* Thumb color */
+  border-radius: 10px;
+  /* Rounded corners */
+}
+
+.overflow-x-auto::-webkit-scrollbar-track,
+.overflow-y-auto::-webkit-scrollbar-track {
+  background-color: #f4f5f5;
+  /* Track color */
+}
+
+/* Dark Mode Scrollbar */
+.dark .overflow-x-auto,
+.dark .overflow-y-auto {
+  scrollbar-color: #52575b #27292a;
+  /* Thumb and Track colors */
+}
+
+.dark .overflow-x-auto::-webkit-scrollbar-thumb,
+.dark .overflow-y-auto::-webkit-scrollbar-thumb {
+  background-color: #52575b;
+  /* Thumb color */
+}
+
+.dark .overflow-x-auto::-webkit-scrollbar-track,
+.dark .overflow-y-auto::-webkit-scrollbar-track {
+  background-color: #27292a;
+  /* Track color */
+}
