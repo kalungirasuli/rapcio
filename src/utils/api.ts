@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// Use environment variable for the base URL
-const API_BASE_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:5000/api';
+// Use environment variable for the base URL with correct port
+const API_BASE_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:5000';
 
 // Create an axios instance with default config
 const api = axios.create({
@@ -23,32 +23,46 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// API endpoints grouped by resource
+// Add response interceptor to handle token expiration
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      // Clear local storage and redirect to login on unauthorized
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      window.location.href = '/';
+    }
+    return Promise.reject(error);
+  }
+);
+
+// API endpoints grouped by resource with correct paths
 const endpoints = {
   auth: {
-    login: '/auth/login',
-    signupAdmin: '/auth/signup/admin',
-    signupReferee: '/auth/signup/referee',
+    login: '/api/auth/login',
+    signupAdmin: '/api/auth/signup/admin',
+    signupReferee: '/api/auth/signup/referee',
   },
   users: {
-    getAll: '/users',
-    getById: (id: string) => `/users/${id}`,
-    update: (id: string) => `/users/${id}`,
-    delete: (id: string) => `/users/${id}`,
+    getAll: '/api/users',
+    getById: (id: string) => `/api/users/${id}`,
+    update: (id: string) => `/api/users/${id}`,
+    delete: (id: string) => `/api/users/${id}`,
   },
   clubs: {
-    getAll: '/clubs',
-    getById: (id: string) => `/clubs/${id}`,
-    create: '/clubs',
-    update: (id: string) => `/clubs/${id}`,
-    delete: (id: string) => `/clubs/${id}`,
+    getAll: '/api/clubs',
+    getById: (id: string) => `/api/clubs/${id}`,
+    create: '/api/clubs',
+    update: (id: string) => `/api/clubs/${id}`,
+    delete: (id: string) => `/api/clubs/${id}`,
   },
   players: {
-    getAll: '/players',
-    getById: (id: string) => `/players/${id}`,
-    create: '/players',
-    update: (id: string) => `/players/${id}`,
-    delete: (id: string) => `/players/${id}`,
+    getAll: '/api/players',
+    getById: (id: string) => `/api/players/${id}`,
+    create: '/api/players',
+    update: (id: string) => `/api/players/${id}`,
+    delete: (id: string) => `/api/players/${id}`,
   },
 };
 
@@ -59,6 +73,7 @@ const authService = {
       const response = await api.post(endpoints.auth.login, { email, password });
       return response.data;
     } catch (error) {
+      console.log("An error occurred during login:", error);
       throw error;
     }
   },

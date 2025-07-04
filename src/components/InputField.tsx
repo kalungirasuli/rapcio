@@ -1,14 +1,14 @@
 import React from "react";
 
-interface InputFieldProps {
+export interface InputFieldProps {
   label: string;
   type: string;
   name: string;
-  id: string;
   value: string;
-  className?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
+  required?: boolean;
+  id?: string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -16,22 +16,28 @@ const InputField: React.FC<InputFieldProps> = ({
   type,
   name,
   value,
-  className,
-  id,
   onChange,
   placeholder,
+  required,
+  id,
 }) => {
   return (
-    <div className="mb-4">
-      <label htmlFor={id} className="block text-sm text-label dark:text-labelDark font-medium mb-1">{label}</label>
+    <div className="space-y-2">
+      <label
+        htmlFor={id || name}
+        className="block text-sm font-medium text-label dark:text-labelDark"
+      >
+        {label}
+      </label>
       <input
         type={type}
         name={name}
+        id={id || name}
         value={value}
-        id={id}
         onChange={onChange}
         placeholder={placeholder}
-        className={`w-full px-4 py-2 border border-label dark:border-labelDark placeholder:text-sm placeholder-label dark:placeholder-labelDark bg-transparent rounded-md focus:outline-none focus:ring-1 focus:ring-textColor dark:focus:ring-textColorDark ${className}`}
+        required={required}
+        className="block w-full rounded-md border border-gray-300 dark:border-gray-600 p-2 text-textColor dark:text-textColorDark bg-input dark:bg-inputDark focus:border-primary dark:focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
       />
     </div>
   );

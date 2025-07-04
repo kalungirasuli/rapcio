@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "./store/store";
 import { ToastContainer } from "react-toastify";
@@ -8,15 +8,20 @@ import NotFound from "./pages/NotFound";
 import AdminRoutes from "./routes/AdminRoutes";
 import RefereeRoutes from "./routes/RefereeRoutes";
 
-const ProtectedRoute: React.FC=({childre:any})=>{
-  const user=localStorage.getItem('user')
-  const navigate=useNavigate()
-
-  if(user){
-    return children
-  }
-  navigate('/login')
+interface ProtectedRouteProps {
+  children: React.ReactNode;
 }
+
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
+  const user = localStorage.getItem('user');
+  
+  if (!user) {
+    // Redirect to login if user is not authenticated
+    return <Navigate to="/" replace />;
+  }
+
+  return <>{children}</>;
+};
 
 const App: React.FC = () => {
   const theme = useSelector((state: RootState) => state.ui.theme);
@@ -29,16 +34,29 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        {/* Auth routes */}
+        {/* Auth routes - accessible without authentication */}
         <Route path="/*" element={<AuthRoutes />} />
 
-        {/* Dashboard routes */}
-        <ProtectedRoute>
-        <Route path="/administrator/*" element={<AdminRoutes />} />
+        {/* Protected Admin routes */}
+        <Route
+          path="/administrator/*"
+          element={
+            <ProtectedRoute>
+              <AdminRoutes />
+            </ProtectedRoute>
+          }
+        />
 
-        {/* Dashboard routes */}
-        <Route path="/referee/*" element={<RefereeRoutes />} />
-        </ProtectedRoute>
+        {/* Protected Referee routes */}
+        <Route
+          path="/referee/*"
+          element={
+            <ProtectedRoute>
+              <RefereeRoutes />
+            </ProtectedRoute>
+          }
+        />
+
         {/* Catch-all route for unmatched routes */}
         <Route path="*" element={<NotFound />} />
       </Routes>

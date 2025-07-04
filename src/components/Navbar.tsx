@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme, toggleSidebar } from "../store/slices/uiSlice";
+import { logout } from "../store/slices/authSlice";
 import { RootState } from "../store/store";
 import {
   MdOutlineDarkMode,
@@ -7,10 +8,14 @@ import {
   MdMenu,
   MdMenuOpen,
 } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import Button from "./Button";
 
 const Navbar: React.FC = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const theme = useSelector((state: RootState) => state.ui.theme);
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
 
   const handleThemeToggle = () => {
     dispatch(toggleTheme());
@@ -19,6 +24,11 @@ const Navbar: React.FC = () => {
 
   const handleSidebarToggle = () => {
     dispatch(toggleSidebar());
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
   };
 
   // Using the correct RootState type for better type safety
@@ -69,6 +79,17 @@ const Navbar: React.FC = () => {
             <MdOutlineDarkMode size={22} />
           )}
         </button>
+
+        {/* Logout Button */}
+        {user.role && (
+          <Button
+            onClick={handleLogout}
+            variant="secondary"
+            className="px-4 py-2"
+          >
+            Logout
+          </Button>
+        )}
       </div>
     </nav>
   );
